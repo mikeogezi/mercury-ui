@@ -3,8 +3,7 @@ import { FaMagic, FaRedoAlt } from "react-icons/fa";
 import axios from 'axios';
 import { Input, Image, ChakraProvider, ButtonGroup, Button, Flex, Stack, Center, Alert, AlertIcon } from "@chakra-ui/react";
 
-const HOST = "https://994e-129-128-184-114.ngrok-free.app";
-// const HOST = "http://127.0.0.1:5000";
+const MERCURY_BACKEND_HOST = process.env.REACT_APP_MERCURY_BACKEND_HOST || "http://127.0.0.1:5000";
 const DEBOUNCE_DELAY = 150; // Time in milliseconds
 
 function App() {
@@ -26,7 +25,7 @@ function App() {
   // Function to send request
   const fetchImage = async (prompt, image = null, fast = true) => {
     try {
-      const response = await axios.post(`${HOST}/api/generate-image`, {
+      const response = await axios.post(`${MERCURY_BACKEND_HOST}/api/generate-image`, {
         fast,
         image,
         prompt: prompt,
